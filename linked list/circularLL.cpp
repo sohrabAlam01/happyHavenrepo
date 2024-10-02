@@ -70,10 +70,29 @@ void deleteNode(Node *&ptr, int data){
     }
     //if the node to be deleted is pointed by ptr itself
     if(ptr == curr){
-        ptr = prev;  //ptr can be pointed to any node expect the node to be deleted
+        ptr = prev;  //ptr can be pointed to any node expect the node to be deleted 
     }
 
     delete curr;
+}
+
+//function to check if the linked list is circular or not
+
+bool isCircularLL(Node *head){
+    //when link is empty
+    if(head == NULL) return true;
+    //when there is only one node pointing to itself
+    if(head->next == head) return true;
+    //when there is greater than one node in the linked list
+    Node *ptr = head;
+    while(ptr != NULL && ptr->next != head){
+        ptr = ptr->next;
+    }
+    if(ptr == NULL) return false;
+    else {
+        return true;
+    }
+
 }
 
 int main(){
@@ -85,6 +104,12 @@ int main(){
  insertNode(ptr, 30, 20);
  deleteNode(ptr, 30);
  print(ptr);
+
+if(isCircularLL(ptr)) cout<<"LL is a circular linked list";
+else{
+    cout<<"it is not a circular linked list";
+}
+
 
     return 0;
 }
