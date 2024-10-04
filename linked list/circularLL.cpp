@@ -1,4 +1,5 @@
 #include<iostream>
+#include<map>
 using namespace std;
 
 class Node{
@@ -49,6 +50,8 @@ void print(Node *ptr){
      cout<<ptr->data<<" ";
      ptr = ptr->next;
     }while(ptr != start);
+
+    cout<<endl;
 }
 
 
@@ -79,7 +82,7 @@ void deleteNode(Node *&ptr, int data){
 //function to check if the linked list is circular or not
 
 bool isCircularLL(Node *head){
-    //when link is empty
+    //when list is empty
     if(head == NULL) return true;
     //when there is only one node pointing to itself
     if(head->next == head) return true;
@@ -95,6 +98,30 @@ bool isCircularLL(Node *head){
 
 }
 
+
+//approach 2: using hashmap to detect loop in the linked list
+
+bool isItCircular(Node *ptr){
+
+   map<Node*, bool>visited;
+
+   while(ptr != NULL){
+      if(visited[ptr] == true) return true; //loop exists
+      visited[ptr] = true;
+      ptr = ptr->next;
+   }
+   //will come out from loop and reach here only when there is null value
+   return false;
+
+}
+
+
+
+
+
+
+
+
 int main(){
 
  Node* ptr = NULL;  //ptr will be pointing to any node in the circular linked list because there is no head or tail pointer in the circular linked list
@@ -105,7 +132,7 @@ int main(){
  deleteNode(ptr, 30);
  print(ptr);
 
-if(isCircularLL(ptr)) cout<<"LL is a circular linked list";
+if(isItCircular(ptr)) cout<<"LL is a circular linked list";
 else{
     cout<<"it is not a circular linked list";
 }
