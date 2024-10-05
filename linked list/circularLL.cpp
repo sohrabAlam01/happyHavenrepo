@@ -116,10 +116,59 @@ bool isItCircular(Node *ptr){
 }
 
 
+///////////floyed warshall algorithm/////////////
+/*
+1.detect a loop in the LL
+2. find the statring node of the loop;
+3. remove the loop in the linked list
+*/
+
+//1. function to find if there exists a loop in the list and return the node at which slow and fast pointer meets
 
 
+Node * floydDetectLoop(Node *head){
+    if(head == NULL) return head;
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast != NULL && fast->next != NULL)
+    {
+         fast = fast->next->next;
+         slow = slow->next;
+         if(slow == fast){
+            return slow;
+         }
+    }
+    return NULL;
+}
 
 
+//2. finding the starting node of the loop
+
+Node * startingLoop(Node *head){
+    if(head == NULL) return;
+    Node *interSection = floydDetectLoop(head);
+
+    if(interSection == NULL) return NULL; //if there is no loop then how we will find the starting node of the loop
+
+    Node* slow = head;
+    while(interSection != slow){
+          slow = slow->next;
+          interSection = interSection->next;
+    }
+
+    return interSection;
+}
+
+
+//3.removing the loop
+void removeLoop(Node *head){
+    Node* ptr = floydDetectLoop(head);
+    if(ptr == NULL) return;  //if ptr =  null it means there is no loop in the linked list
+    while(ptr->next != NULL) ptr = ptr->next;
+    ptr->next = NULL;
+}
 
 
 int main(){
@@ -137,6 +186,6 @@ else{
     cout<<"it is not a circular linked list";
 }
 
-
+cout<<(NULL == NULL);
     return 0;
 }
