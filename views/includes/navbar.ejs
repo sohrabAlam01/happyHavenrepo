@@ -1,0 +1,112 @@
+
+<style>
+
+  .btn-search{
+          background-color: #fe424d;
+          color: #fff;
+          border-radius: 25px !important;
+          padding: 0.2rem 1.2rem 0.34rem 1.2rem;
+  }
+
+  .btn-search:hover{
+          background-color: #fe424d;
+          color: #fff;
+  }
+
+  .btn-search i{
+          display: inline;
+          margin-right: 0.5rem;
+  }
+
+ .serch-input{
+          border-radius: 25px;
+          padding: 0.5rem 3rem 0.5rem 3rem;
+          font-size: 1rem;
+ }
+
+ .listHaven{
+       
+       border: 0.6px solid rgb(233, 228, 228);
+       background-color: rgba(0, 0, 10, 0.463);
+       border-radius: 20px;
+       color: whitesmoke !important;
+       padding-left: 2rem !important;
+       padding-right: 2rem !important;
+       margin-right: 15px !important;
+       text-decoration: none !important;
+       
+ }
+
+ .listHaven {
+    background-color: #e45646f0; /* Warm, inviting color (tomato) */
+    color: white;
+    padding: 12px 24px; /* Padding for comfortable sizing */
+    font-size: 16px; /* Adjust font size */
+    font-weight: bold;
+    border: none; /* Remove border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth hover transition */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.listHaven:hover {
+    background-color: #e5533f; /* Darken on hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.listHaven:active {
+    background-color: #cc4b35; /* Even darker on click */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+    transform: translateY(0); /* Return to original position */
+}
+
+
+</style>
+
+
+
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+
+   <div>
+    <a class="navbar-brand" href="/listings"> <img src="/images/happyHaven-removebg-preview.png" class="logo" alt="img"></a>
+   </div>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <div class="navbar-nav">
+        <a class="nav-link explore-btn" href="/listings">Explore</a>
+      </div>
+
+
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 serch-input" type="search" placeholder="Search destinations">
+          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </form>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link listHaven" href="/listings/new">List Your Haven</a>
+        <%if(!userInfo){%>
+
+          <a class="nav-link" aria-current="page" href="/login"><b>Login</b></a>
+          <a class="nav-link" href="/signup"><b>SignUp</b></a>
+
+          <%}else{%>
+
+            <a class="nav-link" href="/logout"><b>Logout</b></a>
+
+            <%}%>
+      </div>
+
+    </div>
+  </div>
+</nav>

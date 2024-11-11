@@ -1,0 +1,225 @@
+body{
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+    flex: 1 !important;
+}
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+}
+.nav-link{
+    color: #222222 !important;
+}
+
+.main-footer{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    bottom: 0px;
+    width: 90%;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    margin:0 5%;
+    height: 5rem;
+    border-top: 1.2px solid rgba(128, 128, 128, 0.526);
+    margin-top: 3rem;
+}
+
+.f-info-two{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1.5rem;
+}
+
+.f-social a{
+ margin-right: 15px;
+align-items: center;
+}
+
+.f-social a:hover{
+    opacity: 1;
+}
+
+.f-social{
+    margin-top: 5px;
+}
+.lang, .inr{
+    margin-top: 6px;
+}
+
+
+
+.f-info-one a{
+    margin-right: 12px;
+    text-decoration: none !important;
+    color: rgba(54, 46, 46, 0.773);
+}
+
+.f-info-one a:hover{
+    color: rgba(54, 46, 46, 0.884);
+    text-decoration: underline !important;
+}
+.f-info-one i{
+    color: #fe424d;
+    margin-right: 30px;
+}
+
+
+
+/* card styling */
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    row-gap: 35px;
+    
+}
+
+.listing-card{
+    width: 19.21rem;
+    height: 22rem;
+    border: none !important;
+}
+img{
+    width: 100%;
+    height: 19rem;
+    border-radius: 15px !important;
+    object-fit: cover;
+   
+}   
+
+.card-body{
+    /* font-family: 'Plus Jakarta Sans', sans-serif; */
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 0 !important;
+    line-height: 1rem;
+    margin-top: 10px;
+   
+}
+
+.card-title{
+    font-weight: 600;
+    font-size: 1rem;
+}
+.cards a{
+    text-decoration: none !important;
+}
+
+
+
+.fa-indian-rupee-sign{
+    font-size: 0.85rem;
+}
+
+.price{
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.night{
+    font-weight: 500;
+    opacity: 0.9;
+    font-size: 0.9rem;
+    
+}
+
+.listing-image{
+    width: 100%;
+    /* height: 15rem; */
+    object-fit: cover;
+    /* border-radius: 15px !important; */
+    /* margin-top: 1rem; */
+    /* margin-bottom: 1rem; */
+    /* border: 1px solid rgba(128, 128, 128, 0.438); */
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.listing-image:hover{
+    transform: scale(1.002);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* edit button */
+
+.edit-btn{
+    background-color: #0aab0a !important;
+    border: none !important;
+}
+
+/* show.ejs */
+
+.show-image{
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+    border-radius: 15px !important;
+    /* margin-top: 1rem; */
+    /* margin-bottom: 1rem; */
+    /* border: 1px solid rgba(128, 128, 128, 0.438); */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.btns{
+    display: flex;
+}
+
+.delete-btn{
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+/* Error.ejs */
+.errorEjs{
+    
+    height: 60vh !important;
+    width: 80vw !important;
+    margin-left: 0 !important;
+    background-color: rgb(251, 251, 251);
+    
+  
+}
+
+.logo{
+    height: 150px !important;
+    width: 150px !important;
+    margin-left: 1rem !important;
+}
+
+.explore-btn {
+    padding: 12px 24px;               /* Adds padding for a comfortable click area */
+    background-color: #4CAF50;        /* Primary color (green in this case) */
+    color: #fff;                      /* Text color */
+    font-size: 16px;                  /* Font size */
+    font-weight: bold;                /* Bold text */
+    border: none;                     /* Removes default border */
+    border-radius: 8px;               /* Adds rounded corners */
+    cursor: pointer;                  /* Changes cursor to pointer */
+    transition: all 0.3s ease;        /* Smooth transition for hover effect */
+    text-transform: uppercase;        /* Makes text uppercase */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adds subtle shadow */
+  }
+  
+  .explore-btn:hover {
+    background-color: #45a049;        /* Darkens the color on hover */
+    transform: scale(1.05);           /* Slightly increases size on hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Adds deeper shadow on hover */
+  }
+  
+  .explore-btn:active {
+    transform: scale(0.98);           /* Shrinks slightly when clicked */
+  }
+  
