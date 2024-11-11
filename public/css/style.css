@@ -10,7 +10,11 @@ body{
 }
 .navbar{
     height: 5rem;
-    background-color: white;
+    position: fixed;
+    top: 0;
+    background-color: #C0C0C0;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .fa-compass{
@@ -197,6 +201,10 @@ img{
     height: 150px !important;
     width: 150px !important;
     margin-left: 1rem !important;
+    position: fixed;
+    top:  -32px;
+    margin-right: 5rem !important;
+
 }
 
 .explore-btn {
