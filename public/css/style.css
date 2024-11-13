@@ -231,3 +231,11 @@ img{
     transform: scale(0.98);           /* Shrinks slightly when clicked */
   }
   
+
+
+  /* map */
+
+  #map { 
+   height: 400px;
+   width: 90vh;
+}

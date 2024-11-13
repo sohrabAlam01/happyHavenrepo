@@ -1,5 +1,7 @@
 const Listing = require('../models/listing');
-
+const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const mapToken = process.env.MAP_TOKEN;
+const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 
 module.exports.index = async (req, res, next) => {
@@ -26,18 +28,23 @@ module.exports.showListing = async (req, res, next) => {
 
 module.exports.createListing = async (req, res, next) => {
    
+   const response = await geocodingClient.forwardGeocode({
+        query: req.body.listing.location,
+        limit: 1
+      })
+        .send()
+        
+   //console.log(response.body.features[0]);
+
     let url = req.file.path;
     let filename = req.file.filename;
-    //let {title, description, price, location, country} =  req.body; //this is also a way to get the information from post request
-   //manual way:  if(!req.body.listing) throw new expressError(400, "Bad request! Please enter a valid listing"); //if somebody sends an empty listing through direct hoppscotch
+   
     let newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
-    /*
-    lengthy method to check validation of the intered fields before saving it
-     if(!newListing.title) throw new expressError(400, "title is missing");
-     if(!newListing.description) throw new expressError(400, "Listing is missing");
-    */ 
+
     newListing.image = {url, filename};
+    newListing.geometry = response.body.features[0].geometry; 
+    
     await newListing.save();
     req.flash("success", "New listing created")
     res.redirect("/listings");
@@ -66,7 +73,7 @@ module.exports.updateListing = async (req, res, next) => {
         req.flash("error", "You do not have authorities to make changes")
         return res.redirect(`/listings/${id}`);
     }
-    
+
     let updatedListing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
     if(typeof req.file !== "undefined"){
