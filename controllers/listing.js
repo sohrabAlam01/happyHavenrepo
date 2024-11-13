@@ -66,6 +66,8 @@ module.exports.updateListing = async (req, res, next) => {
         req.flash("error", "You do not have authorities to make changes")
         return res.redirect(`/listings/${id}`);
     }
+    
+    let updatedListing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
     if(typeof req.file !== "undefined"){
 
@@ -74,10 +76,11 @@ module.exports.updateListing = async (req, res, next) => {
 
     // console.log(req.body.listing);
     //  console.log(await Listing.findById(id));
-    let updatedListing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+   
     updatedListing.image = {url, filename};
-    await updatedListing.save();
+    
     }
+    await updatedListing.save();
     req.flash("success", "Listing updated successfully")
     res.redirect(`/listings/${id}`);
 };

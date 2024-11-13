@@ -10,7 +10,7 @@ const listing = require("../models/listing.js");
 
 
 router.route("/")
-.get(wrapAsync(listingController.index))   //index route : to show all the data
+.get(wrapAsync(listingController.index))   //index route : to show all listings
 .post(isLoggedIn, upload.single('listing[image]'),  validateListing ,wrapAsync(listingController.createListing)); //create route: routr to save the entered listing info
 
 
