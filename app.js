@@ -2,8 +2,8 @@ if(process.env.NODE_ENV != "production") {
 
     require('dotenv').config();
 
-}
-
+}    
+ 
 
 const express = require('express');
 const app = express();
@@ -26,13 +26,13 @@ app.engine("ejs", ejsMate);
 app.use(express.static(__dirname + "/public"));  //we can also use: app.use(express.static)
 //setting up ejs
 app.set("view engine", "ejs");
-
+ 
 app.set("views", __dirname + "/views");          //app.set("views", path.join(__dirname, "views")); since __dirname is a node.js variable that returns the address of the current directory in which the app.js is present
 //to parse(encode) the url
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-
+ 
 //creating and connecting database happyHaven (atlas mongodb)
 const dbUrl = process.env.ATLASDB_URL
 async function main() {
@@ -54,7 +54,7 @@ const store = MongoStore.create({
         secret: process.env.SECRET
     },
     touchAfter: 24 * 3600
-});
+});  
 
 store.on("error", ()=>{
     console.log("ERROR IN MONGO SESSION STORE", err)
@@ -67,7 +67,7 @@ const sessionOptions = {
      saveUninitialized: true,
 
      cookie: {
-              
+               
         expires: Date.now() + 7*24*60*60*1000,        //login info will get expires after 7 days (given in milliseconds)
         maxAge : 7*24*60*60*1000,
         httpOnly: true,    //for security purpose
@@ -75,7 +75,7 @@ const sessionOptions = {
 
 };
 
-
+   
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -87,12 +87,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-//middleware to set flash message
+//middleware to set flash message and user info
 app.use((req, res, next)=>{
-
     res.locals.successMsg = req.flash("success");
     res.locals.errorMsg = req.flash("error");
-    res.locals.userInfo = req.user;  //req.user : it will be undefined when user is not logged in and contains user info when user is logged in
+    res.locals.userInfo = req.user;  
     next();
 })
 

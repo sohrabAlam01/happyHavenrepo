@@ -1,4 +1,4 @@
-<%if(successMsg.length > 0){%>
+<%if(locals.successMsg && locals.successMsg.length > 0){%>
 
     <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
         <%= successMsg %>
@@ -8,7 +8,7 @@
 <%}%>
 
 
-<%if(errorMsg.length > 0){%>
+<%if(locals.errorMsg && locals.errorMsg.length > 0){%>
 
     <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
         <%= errorMsg %>
